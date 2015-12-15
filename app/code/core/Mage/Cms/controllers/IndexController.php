@@ -42,11 +42,28 @@ class Mage_Cms_IndexController extends Mage_Core_Controller_Front_Action
     public function indexAction($coreRoute = null)
     {
     	
-    	echo 'hello<br>';
     	
-    	var_dump(Mage::getConfig()->getNode('default/some/random/xpath'));
+    	Zend_Debug::dump(
+    			
+    			Mage::getModel('catalog/product')
+    			
+    			);
     	
-    	die('<br>well ok');
+    	
+    	echo get_class(Mage::getResourceModel('catalog/product'));
+    	echo '<br>';
+    	
+    	echo get_class(Mage::helper('sales'));
+    	echo '<br>';
+
+    	echo get_class(Mage::helper('sales/data'));
+    	echo '<br>';
+
+    	echo get_class(Mage::app()->getLayout()->createBlock('core/template'));
+    	echo '<br>';
+    	
+		die;    	
+    	
         $pageId = Mage::getStoreConfig(Mage_Cms_Helper_Page::XML_PATH_HOME_PAGE);
         if (!Mage::helper('cms/page')->renderPage($this, $pageId)) {
             $this->_forward('defaultIndex');
